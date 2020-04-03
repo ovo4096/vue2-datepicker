@@ -155,7 +155,7 @@ export default {
     getTerm(date) {
       const info = LunarCalendar.solarToLunar(...this.getCellTitle(date).split('-'));
       return info.term ? info.term : info.lunarDayName;
-    }
+    },
   },
 };
 </script>

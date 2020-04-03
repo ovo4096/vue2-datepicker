@@ -15,6 +15,7 @@ const plugins = [
   }),
   vue(),
   babel({
+    exclude: 'node_modules/lunar-calendar/**',
     runtimeHelpers: true,
     extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
   }),
