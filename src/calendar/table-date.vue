@@ -33,7 +33,7 @@
 
 <script>
 import { getWeek, format } from 'date-format-parse';
-import LunarCalendar from 'lunar-calendar';
+import { calendar } from '../util/calendar';
 import { chunk } from '../util/base';
 import { createDate } from '../util/date';
 import { getLocaleFieldValue } from '../locale';
@@ -153,8 +153,8 @@ export default {
       return this.getWeek(date, this.t('formatLocale'));
     },
     getTerm(date) {
-      const info = LunarCalendar.solarToLunar(...this.getCellTitle(date).split('-'));
-      return info.term ? info.term : info.lunarDayName;
+      const info = calendar.solar2lunar(...this.getCellTitle(date).split('-'));
+      return info.festival ? info.festival : (info.Term ? info.Term : info.IDayCn);
     },
   },
 };
