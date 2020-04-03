@@ -24,6 +24,7 @@
           :title="getCellTitle(cell.day)"
         >
           <div>{{ cell.text }}</div>
+          <div>{{ getTerm(cell.day) }}</div>
         </td>
       </tr>
     </tbody>
@@ -32,6 +33,7 @@
 
 <script>
 import { getWeek, format } from 'date-format-parse';
+import LunarCalendar from 'lunar-calendar';
 import { chunk } from '../util/base';
 import { createDate } from '../util/date';
 import { getLocaleFieldValue } from '../locale';
@@ -150,6 +152,10 @@ export default {
       const date = createDate(year, month, day);
       return this.getWeek(date, this.t('formatLocale'));
     },
+    getTerm(date) {
+      const info = LunarCalendar.solarToLunar(...this.getCellTitle(date).split('-'));
+      return info.term ? info.term : info.lunarDayName;
+    }
   },
 };
 </script>
